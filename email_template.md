@@ -12,27 +12,25 @@ Make sure that the template is carefully filled in, and you spell check it. This
 
 ---
 ### Link to your repo
-[https://github.com/notionparallax/code1161base](https://github.com/notionparallax/code1161base)
+[https://github.com/cathyvu/cathyvu.git](https://github.com/cathyvu/cathyvu.git)
 
 ### Name
-Ben Doherty
+Catherine Vu
 
 ### Student number
-z123456
+z5061877
 
 ### does this email require a response?
-yes/no
+yes
 
 ### Description of situation
-My head is on fire
+
 
 ### What have you tried already?
-* I have tried putting my head in the sand
-* I have tried swimming in the sea
-* I have asked in the slack channel for this week if anyone else has any ideas. [Here's a link](https://en.wikipedia.org/wiki/Never_Gonna_Give_You_Up) to the conversation about it.
+
 
 ### What information would you like in the response
-I assume, from your baldy head, that you have had an on-fire head before, what did you do about it?
+Your opinion on how I should proceed next.
 
 ---
 
@@ -44,4 +42,4 @@ There shouldn't be _too_ much information here because it'll be mostly covered a
 
 Thanks
 
-[your name]
+Cathy
