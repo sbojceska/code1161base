@@ -105,7 +105,6 @@ def not_number_rejector(message):
         except Exception as e:
             print("Try again ({})".format(e))
 
-        return(input_number)
         pass
 
 
