@@ -28,6 +28,60 @@ def advancedGuessingGame():
     Remember to think modular. Try to keep your functions small and single
     purpose if you can!
     """
+    print("Goood day,let's play")
+    print("Enter a lowerBound:")
+    lowerBound = not_number_rejector("your lower bound is:")
+    upperBound = not_number_rejector("What is your upper bound?:")
+    while upperBound <= lowerBound:
+        print("re-enter upperBound")
+        pass
+    upperBound = int(upperBound)
+    lowerBound = int(lowerBound)
+
+    actualNumber = random.randint(lowerBound, upperBound)
+    guess = False
+
+    while not guess:
+        try:
+            input_number = int(raw_input("Guess Number:"))
+            print("{} is valid".format(input_number))
+            if input_number == actualNumber:
+                print("{} is correct".format(input_number))
+                guess = True
+            elif input_number < actualNumber:
+                print("too small. try again")
+            elif input_number > upperBound:
+                print("out of range")
+            elif input_number < lowerBound:
+                print("out of range")
+            else:
+                print("too big, try again")
+        except Exception as e:
+                print("Try again because it's not a number ({})".format(e))
+        return "You got it!"
+    pass
+
+    actualNumber = random.randint(upperBound, lowerBound)
+    guess = False
+
+    while not guess:
+        try:
+            input_number = int(raw_input("Guess Number:"))
+            print("{} is valid".format(input_number))
+            if input_number == actualNumber:
+                print("{} is correct".format(input_number))
+            guess = True
+            elif input_number < actualNumber:
+                print("too small. try again")
+            elif input_number > lowerBound:
+                print("out of range")
+            elif input_number < upperBound:
+                print("out of range")
+        else:
+            print("too big, try again")
+    except Exception as e:
+            print("Try again because it's not a number ({})".format(e))
+    return "You got it!"
     pass
 
 
