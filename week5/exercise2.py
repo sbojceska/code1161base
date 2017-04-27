@@ -105,14 +105,15 @@ def abba(source="abba", guard=3):
         else:
             return letter
 
-    result = ''
-    for let in source:
-        result += apply_rules(let)
-    if guard >= 2:
-        for i in range(guard-1):
-            return abba(result, guard-1)
+    parts = list(source)
+    result = map(apply_rules, parts)
+    abba_string = "".join(result)
+    print(abba_string)
+    guard -= 1
+    if guard > 0
+        return abba(abba_string, guard)
     else:
-        return result
+        return abba_string
 
 
 def koch(t, order, size):
@@ -156,9 +157,14 @@ def square_koch(t, order, size):
 
     """
     trace = ""
-    # write the rest of the function here.
+    if order == 0:
+        t.forward(size)
+    else:
+        for angle in [45, -45, -45, 45, 0]
+        trace += square_koch(t, order-1, size/5)
+        t.left(angle)
     return str(order) + trace
-    pass
+
 
 
 def draw_square(steps=4):
