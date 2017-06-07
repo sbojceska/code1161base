@@ -78,8 +78,10 @@ def calculate_hypotenuse(base, height):
 
 
 def calculate_area(base, height):
-    pass
-
+     """Return the triangle's area."""
+    area = (base * height)/2
+    return(area)
+    
 
 def calculate_perimeter(base, height):
     pass
