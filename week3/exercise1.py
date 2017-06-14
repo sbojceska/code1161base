@@ -30,6 +30,7 @@ def lone_ranger(start, stop, step):
 
 def two_step_ranger(start, stop):
     """Make a range that steps by 2.
+
     Sometimes you want to hide complexity.
     Make a range function that always has a step size of 2
     """
@@ -130,7 +131,7 @@ def super_asker(low, high):
                 print("Try again ({})".format(e))
 
     return(input_number)
-    pass
+
 
 if __name__ == "__main__":
     # this section does a quick test on your results and prints them nicely.
