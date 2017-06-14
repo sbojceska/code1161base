@@ -61,7 +61,7 @@ def get_some_details():
 
 
 def wordy_pyramid():
-    """Make a pyramid out of real words.
+        """Make a pyramid out of real words.
 
     There is a random word generator here: http://www.setgetgo.com/randomword/
     The only argument that the generator takes is the length of the word.
@@ -102,7 +102,7 @@ def wordy_pyramid():
         print(word)
         pyramid.append(word)
 
-    for j in range(20, 3, -2)
+    for j in range(20, 3, -2):
         r = requests.get(URL + str(j))
         word = r.text
         print(word)
@@ -122,7 +122,7 @@ def wunderground():
          variable and then future access will be easier.
     """
     base = "http://api.wunderground.com/api/"
-    api_key = "YOUR KEY - REGISTER TO GET ONE"
+    api_key = "d39d6941946bf982"
     country = "AU"
     city = "Sydney"
     template = "{base}/{key}/conditions/q/{country}/{city}.json"
@@ -150,17 +150,15 @@ def diarist():
     TIP: remember to commit 'lasers.pew' and push it to your repo, otherwise
          the test will have nothing to look at.
     """
-    inputFile = open('week4/Trispokedovetiles(laser).gcode', 'r')
-    outputFile = open('week4/lasers.pew', 'w')
+    laser = open("Trispokedovetiles(laser).gcode", "r")
+    data_laser = laser.read()
+    times_laser = data_laser.count("M10 P1")
+    laser.close()
+    switch_laser = open("lasers.pew", "w")
+    switch_laser.write(str(times_laser))
+    switch_laser.close()
 
-    count = 0
-
-    for x in inputFile.readlines():
-        if "M10 P1" in x:
-            count = count + 1
-    outputFile.type(str(count))
-    inputFile.close()
-    outputFile.close()
+    return times_laser
 
 
 if __name__ == "__main__":
