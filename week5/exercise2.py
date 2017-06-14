@@ -1,4 +1,3 @@
-# -*- coding: UTF-8 -*-
 """Recursion.
 
 Exercises and examples to illustrate recursion.
@@ -12,9 +11,7 @@ def italian_dinner(axiom="tomatoes", guard=6):
     u"""Make recursive dinner plans.
 
     This is an example to help you get your head around the idea of recursion.
-
     # The Italian dinner
-
     In Douglas Hofstader's _Metamagical Themas_ (a compendium of essays he
     wrote for _Scientific American_ when he took over from martin Gardiner),
     there is a typically funny, but useful, introduction to production systems
@@ -22,7 +19,6 @@ def italian_dinner(axiom="tomatoes", guard=6):
     Production systems are examples of recursive algorithms, that is, they are
     functions that use as input the output of their own results on earlier
     operations.
-
     The most general way of characterising a production system is to see it as
     a formal language based on symbol manipulation. They habe much in common
     with formal systems in logic in that:
@@ -32,24 +28,19 @@ def italian_dinner(axiom="tomatoes", guard=6):
         3.  there are a set of rules for transforming any statement which is
             part of the formal system into any other using replacement rules.
     In the itallian dinner, teh axiom is of course _tomatoes_
-
     Note that in order for this to work, we need to habe at least one word in
     the right-hand side that matches one of the words in the left-hand side.
     If we do not do this then the production system will not catch, and it will
     fail to expand into the florid ingredients list.
-
     From Paul Coates, Programming.Architecture
     I would strongly recomend reading this book!
-
     referencing: DOUGLAS R. HOFSTADTER, Metamagical Themas
     https://archive.org/stream/MetamagicalThemas/Metamagical%20Themas,%20Hofstadter_djvu.txt
-
     left-hand side        right-hand side
     tomatoes        ⇨     tomatoes with linguini and basil
     and             ⇨     runny with delicious pesto
     delicious       ⇨     made of runny and yummy pasta and tomatoes
     runny           ⇨     yummy and delicious tomatoes and pasta
-
     Here's a photo of the page: https://goo.gl/photos/bEh8dmkYkeAy7W727
     """
     parts = axiom.split(" ")
@@ -81,9 +72,7 @@ def abba(source="abba", guard=3):
 
     This function takes a seed string, e.g. "abba" and replaces each letter in
     turn acording to the rules. These rules can be of arbitrary complexity.
-
     Modify the rules to map from:
-
                    abba
                     to
                bbaaobaobbba
@@ -91,29 +80,27 @@ def abba(source="abba", guard=3):
     aobaobbbabbaoaaobbbaoaaobaobaobbba
                 and so on...
     """
-    def apply_rules(letter):
+    def mapToString(listOfLetters, guard):
+        """Simplify apply_rules() code."""
+        return ''.join(map(lambda x: apply_rules(x, guard-1), listOfLetters))
+
+    def apply_rules(letter, guard):
         """Control the substitution.
 
-        You need to change these substitutions to make it work.
+        Make it work.
         """
-        if letter == "a":
-            return "bba"
+        if guard == -1:
+            return letter
+        elif letter == "a":
+            return mapToString(['b', 'b', 'a'], guard)
         elif letter == "b":
-            return "aob"
+            return mapToString(['a', 'o', 'b'], guard)
         elif letter == "o":
-            return "oa"
+            return mapToString(['o', 'a'], guard)
         else:
             return letter
 
-    parts = list(source)
-    result = map(apply_rules, parts)
-    abba_string = "".join(result)
-    print(abba_string)
-    guard -= 1
-    if guard > 0
-        return abba(abba_string, guard)
-    else:
-        return abba_string
+    return str(''.join(map(lambda x: apply_rules(x, guard-1), list(source))))
 
 
 def koch(t, order, size):
@@ -139,7 +126,7 @@ def draw_koch(drawing_method, steps_deep=4):
     https://docs.python.org/2/library/turtle.html
     """
     raphael = turtle.Turtle()
-    raphael.speed(1000)
+    raphael.speed(300)
     raphael.penup()
     raphael.goto(-300, 0)
     raphael.pendown()
@@ -150,21 +137,24 @@ def draw_koch(drawing_method, steps_deep=4):
 def square_koch(t, order, size):
     r"""Draw a koch curve with a square rather than a triangular point.
 
-           _
     e.g. _| |_ rather than _/\_
-
     Leave the turtle facing the same direction.
-
     """
     trace = ""
-    if order == 0:
+    # write the rest of the function here.
+    if order == 0:          # The base case is just a straight line
         t.forward(size)
     else:
-        for angle in [45, -45, -45, 45, 0]
-        trace += square_koch(t, order-1, size/5)
-        t.left(angle)
+        trace += square_koch(t, order-1, size/3)   # Go 1/3 of the way
+        t.left(90)
+        trace += square_koch(t, order-1, size/3)
+        t.right(90)
+        trace += square_koch(t, order-1, size/3)
+        t.right(90)
+        trace += square_koch(t, order-1, size/3)
+        t.left(90)
+        trace += square_koch(t, order-1, size/3)
     return str(order) + trace
-
 
 
 def draw_square(steps=4):
@@ -178,10 +168,14 @@ def draw_pointy(steps=4):
 
 
 if __name__ == '__main__':
-    print(draw_koch(drawing_method=square_koch, steps_deep=2))
+    # print(draw_koch(drawing_method=square_koch, steps_deep=2))
     print(draw_koch(drawing_method=square_koch, steps_deep=3))
-    print(draw_koch(drawing_method=square_koch, steps_deep=4))
-    print(draw_koch(drawing_method=koch, steps_deep=2))
-    print("AB:", abba())
-    print("ID:", str(italian_dinner()))
+    # print(draw_koch(drawing_method=square_koch, steps_deep=4))
+    # print(draw_koch(drawing_method=koch, steps_deep=2))
+    # print(draw_koch(drawing_method=koch, steps_deep=1))
+    # print("yoyo -", abba())
+    # print("AB:" + abba(source='baaab' + "!"))
+    # print("AB:" + abba(source='b' + "!"))
+    # print("AB:" + abba(source='roof' + "!"))
+    # print("ID:", str(italian_dinner()))
     pass
