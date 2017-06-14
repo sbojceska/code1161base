@@ -17,8 +17,8 @@ def greet(name="Towering Timmy"):
 
     return a string of "Hello" and the name argument.
     E.g. if given as "Towering Timmy" it should return "Hello Towering Timmy"
-    """
-    print("Hello Towering Timmy")
+    """  # docstring
+    return"Hello " + name
 
 
 def three_counter(input_list=[1, 4, 3, 5, 7, 1, 3, 2, 3, 3, 5, 3, 7]):
@@ -27,8 +27,12 @@ def three_counter(input_list=[1, 4, 3, 5, 7, 1, 3, 2, 3, 3, 5, 3, 7]):
     Return an integer.
     TIP: the test will use a different input_list, so don't just return 5
     """
-    input_list.count(3)
-    return(input_list)
+    # return input_list.count(3)
+    counter = 0
+    for i in input_list:
+        if i == 3:
+            counter = counter + 1
+    return counter
 
 
 def fizz_buzz():
@@ -47,15 +51,20 @@ def fizz_buzz():
     """
     fizzBuzzList = []
     # your code here
-    for num in xrange(1, 101):
-        if num % 5 == 0 and num % 3 == 0:
+    for num in range(1, 101):
+        if (num % 3) == 0 and (num % 5) == 0:
             print ("FizzBuzz")
+            fizzBuzzList.append("FizzBuzz")
         elif num % 3 == 0:
             print ("Fizz")
+            fizzBuzzList.append("Fizz")
         elif num % 5 == 0:
             print ("Buzz")
+            fizzBuzzList.append("Buzz")
         else:
             print (num)
+            fizzBuzzList.append(num)
+    return fizzBuzzList
 
 
 def put_behind_bars(input_string="very naughty boy"):
@@ -69,6 +78,7 @@ def put_behind_bars(input_string="very naughty boy"):
     pipes = "|".join(input_string)
     return("|" + pipes + "|")
 
+
 def pet_filter(letter="a"):
     """Return a list of animals with `letter` in their name."""
     pets = ["dog", "goat", "pig", "sheep", "cattle", "zebu", "cat", "chicken",
@@ -79,7 +89,13 @@ def pet_filter(letter="a"):
             "bali cattle", "gayal", "turkey", "goldfish", "rabbit", "koi",
             "canary", "society finch", "fancy mouse", "siamese fighting fish",
             "fancy rat and lab rat", "mink", "red fox", "hedgehog", "guppy"]
-    pass
+
+    filtered = []
+    letters = set(letter)
+    for word in pets:
+        if letters & set(word):
+            filtered.append(word)
+    return filtered
 
 
 def best_letter_for_pets():
@@ -90,7 +106,16 @@ def best_letter_for_pets():
     """
     import string
     the_alphabet = string.lowercase
-    pass
+    highest = 0
+    for i in range(26):
+        x = the_alphabet[i]
+        new_list = pet_filter(x)
+        if len(new_list) > highest:
+            highest = len(new_list)
+        else:
+            pass
+    most_letter = the_alphabet[highest]
+    return(most_letter)
 
 
 def make_filler_text_dictionary():
@@ -108,6 +133,18 @@ def make_filler_text_dictionary():
     TIP: you'll need the requests library
     """
     import requests
+    baseURL = "http://setgetgo.com/randomword/get.php?len="
+    make_dict = []
+    for j in range(3, 7):
+        num_list = []
+        for i in range(j):
+            url = baseURL + str(j)
+            r = requests.get(url)
+            message = r.text
+            num_list.append(message)
+        make_dict.append(num_list)
+    return{str(j): num_list}
+    return make_dict
     pass
 
 
