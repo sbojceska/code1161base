@@ -70,17 +70,17 @@ def advancedGuessingGame():
             print("{} is valid".format(input_number))
             if input_number == actualNumber:
                 print("{} is correct".format(input_number))
-            guess = True
+                guess = True
             elif input_number < actualNumber:
                 print("too small. try again")
             elif input_number > lowerBound:
                 print("out of range")
             elif input_number < upperBound:
                 print("out of range")
-        else:
-            print("too big, try again")
-    except Exception as e:
-            print("Try again because it's not a number ({})".format(e))
+            else:
+                print("too big, try again")
+            except Exception as e:
+                print("Try again because it's not a number ({})".format(e))
     return "You got it!"
     pass
 
